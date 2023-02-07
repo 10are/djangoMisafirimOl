@@ -8,8 +8,8 @@ class City(models.Model):
 
 class District(models.Model):
     name = models.CharField(max_length=100)
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
-
+    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='districts')
+ 
     def __str__(self):
         return self.name
 
@@ -29,34 +29,6 @@ class blog(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
-
-cities = [   
-     "City a", 
-     "City b",
-     "City c",
-     "City d",
-     "City f",
-]
-
-for city in cities:
-    c, created = City.objects.get_or_create(name=city)
-    if created:
-        c.save()
-
-districts = [
-    ["District a", "City a"],
-    ["District a", "City a"],
-    ["District a", "City b"],
-    ["District a", "City b"],
-    ["District b", "City c"],
-    ["District b", "City d"],
-    ["District c", "City d"],
-    ["District c", "City d"],
-    ["District d", "City d"],
-]
-for district in districts:
-    city, created = City.objects.get_or_create(name=district[1])
-    District.objects.create(name=district[0], city=city)
 
 
 
