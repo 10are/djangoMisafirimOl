@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, render
-from blog.models import blog, City, District
+from blog.models import blog as Blog, City, District
 
 def index(request):
-    blog = blog.objects.all()
+    blog = Blog.objects.all()
     return render(request,'blog/index.html',{'blogs':blog})
 
 
