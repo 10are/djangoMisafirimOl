@@ -15,7 +15,7 @@ def createblog(request):
         body = request.POST['body']
         city = request.POST.get('city')
         district = request.POST.get('district')
-        blog = blog(
+        blog = Blog.objects.all(
             username= request.user,
             title=title,
             body=body,
