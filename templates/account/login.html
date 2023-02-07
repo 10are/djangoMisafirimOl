@@ -18,23 +18,31 @@
                                 <p class="text-white-50 mb-5">Lütfen Kullaınıcı Adınızı Ve Şifrenizi Giriniz!</p>
 
                                 <form class="login" method="POST" action="{% url 'account_login' %}" autocomplete="off">
-                                {% csrf_token %}
+                                    {% csrf_token %}
                                     <div class="form-outline form-white mb-4">
                                         <input id="typeEmailX" name="login"
-                                               class="form-control form-control-lg" aria-autocomplete="none" autocomplete="off"/>
+                                               class="form-control form-control-lg" aria-autocomplete="none"
+                                               autocomplete="off"/>
                                         <label class="form-label" for="typeEmailX">Email</label>
                                     </div>
 
                                     <div class="form-outline form-white mb-4">
                                         <input type="password" id="typePasswordX" name="password"
-                                               class="form-control form-control-lg" aria-autocomplete="none" autocomplete=""/>
+                                               class="form-control form-control-lg" aria-autocomplete="none"
+                                               autocomplete=""/>
                                         <label class="form-label" for="typePasswordX">Şifre</label>
                                     </div>
 
 
                                     <p class="small mb-1 pb-lg-2"><input type="checkbox" name="remember"
                                                                          id="id_remember"> Beni Hatırla</p>
-                                    <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="{% url 'account_reset_password' %}">Şifremi
+                                    
+                                    {% if redirect_field_value %}
+                                        <input type="hidden" name="{{ redirect_field_name }}"
+                                               value="{{ redirect_field_value }}"/>
+                                    {% endif %}
+                                    <p class="small mb-5 pb-lg-2"><a class="text-white-50"
+                                                                     href="{% url 'account_reset_password' %}">Şifremi
                                         Unuttum?</a></p>
 
                                     <button class="btn btn-outline-light btn-lg px-5"
@@ -42,13 +50,15 @@
                                     </button>
 
                                     <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                                        <a href="{% provider_login_url 'google' %}" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                                        <a href="{% provider_login_url 'google' %}" class="text-white"><i
+                                                class="fab fa-google fa-lg"></i></a>
                                     </div>
                                 </form>
                             </div>
 
                             <div>
-                                <p class="mb-0">Hesabınız Yok mu? <a href="{{ signup_url }}" class="text-white-50 fw-bold">Kayıt
+                                <p class="mb-0">Hesabınız Yok mu? <a href="{{ signup_url }}"
+                                                                     class="text-white-50 fw-bold">Kayıt
                                     Ol</a>
                                 </p>
                             </div>

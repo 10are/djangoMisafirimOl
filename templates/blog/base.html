@@ -46,9 +46,9 @@
                 <li class="nav-item">
                     {% if user.is_authenticated %}
                         <ul style="list-style: none; display: flex; justify-content: center">
-                            <li> <a class="nav-link" href="#">İlanlar</a></li>
-                            <li> <a class="nav-link" href="#">İlan Oluştur</a></li>
-                            <li> <a class="nav-link" href="#">İlanlarım</a></li>
+                            <li> <a class="nav-link" href="/">İlanlar</a></li>
+                            <li> <a class="nav-link" href="{% url 'create_blog' %}">İlan Oluştur</a></li>
+                            <li> <a class="nav-link" href="{% url 'my_blog' %}">İlanlarım</a></li>
                         </ul>
                     {% else %}
                         <a class="nav-link" href="#">İlanlar</a>
@@ -58,10 +58,10 @@
             <div class="d-flex align-items-center">
                 {% if user.is_authenticated %}
                     <button type="button" onclick="window.location.href = '{% url 'account_email' %}'" class="btn btn-link px-3 me-2">
-                        İlan Oluştur
+                        Mail Adresini Değiştir
                     </button>
                     <button type="button" onclick="window.location.href = '{% url 'account_logout' %}'" class="btn btn-link px-3 me-2">
-                        İlanlarım
+                        Çıkış Yap
                     </button>
                 {% else %}
                     <button type="button" onclick="window.location.href = '{% url 'account_login' %}'" class="btn btn-link px-3 me-2">
