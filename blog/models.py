@@ -29,6 +29,36 @@ class blog(models.Model):
     class Meta:
         ordering = ['-pub_date']
 
+cities = [   
+     "City 1", 
+     "City 2",
+     "City 3",
+     "City 4",
+     "City 5",
+]
+
+for city in cities:
+    c, created = City.objects.get_or_create(name=city)
+    if created:
+        c.save()
+
+districts = [
+    ["District 1", "City 1"],
+    ["District 2", "City 2"],
+    ["District 3", "City 3"],
+    ["District 4", "City 4"],
+    ["District 5", "City 5"],
+    ["District 6", "City 1"],
+    ["District 7", "City 2"],
+    ["District 8", "City 1"],
+    ["District 9", "City 2"],
+]
+
+for district in districts:
+    city = City.objects.get(name=district[1])
+    District.objects.create(name=district[0], city=city)
+
+
 
 
 

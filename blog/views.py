@@ -2,8 +2,8 @@ from django.shortcuts import redirect, render
 from blog.models import blog, City, District
 
 def index(request):
-    blogs = blog.objects.all()
-    return render(request,'blog/index.html',{'blogs':blogs})
+    blog = blog.objects.all()
+    return render(request,'blog/index.html',{'blogs':blog})
 
 
 def createblog(request):
